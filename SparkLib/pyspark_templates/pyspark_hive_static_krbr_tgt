@@ -1,0 +1,58 @@
+# Default SparkConf parameters for static allocation
+
+[SparkConf]
+
+spark.dynamicAllocation.enabled: false
+spark.local.dir: None
+spark.hadoop.hive.metastore.uris: thrift://pklis-chd001999.labiac.df.sbrf.ru:48869
+spark.yarn.access.hadoopFileSystems: hdfs://nsld3:8020/,hdfs://clsklcib:8020/,hdfs://clsklsbx:8020/
+spark.sql.legacy.allowCreatingManagedTableUsingNonemptyLocation: true
+spark.hadoop.hive.exec.dynamic.partition: true
+spark.hadoop.hive.exec.dynamic.partition.mode: nonstrict
+spark.hadoop.hive.exec.max.dynamic.partitions: 50000
+spark.hadoop.hive.exec.max.dynamic.partitions.pernode: 10000
+spark.executor.cores: 8
+spark.executor.instances: 12
+spark.executor.memory: 45g
+spark.driver.memory: 45g
+spark.driver.maxResultSize: 90g
+spark.yarn.driver.memoryOverhead: 4048mb
+spark.yarn.executor.memoryOverhead: 8g
+spark.port.maxRetries: 550
+spark.default.parallelism: 80
+spark.ui.port: 4444
+spark.ui.showConsoleProgress: true
+spark.kryoserializer.buffer.max: 1024mb
+spark.blacklist.enabled: true
+spark.sql.shuffle.partitions: 400
+spark.shuffle.io.connectionTimeout: 800s
+spark.shuffle.filebuffer: 64k
+spark.shuffle.manager: sort
+spark.blacklist.task.maxTaskAttemptsPerNode: 13
+spark.blacklist.task.maxTaskAttemptsPerExecutor: 13
+spark.task.maxFailures: 15
+spark.driver.extraLibraryPath: /opt/workspace/ektov1-av_ca-sbrf-ru/notebooks/support_library/
+spark.executor.extraLibraryPath: /opt/workspace/ektov1-av_ca-sbrf-ru/notebooks/support_library/
+spark.driver.extraClassPath: /opt/cloudera/parcels/PYENV.ZNO0059623792-3.5.pyenv.p0.2/usr/lib/oracle/12.2/client64/lib/ojdbc8.jar
+spark.executor.extraClassPath: /opt/cloudera/parcels/PYENV.ZNO0059623792-3.5.pyenv.p0.2/usr/lib/oracle/12.2/client64/lib/ojdbc8.jar
+spark.jars: /opt/workspace/ektov1-av_ca-sbrf-ru/notebooks/drivers/terajdbc4.jar,/opt/workspace/ektov1-av_ca-sbrf-ru/notebooks/drivers/tdgssconfig.jar
+spark.executor.extraJavaOptions: -Djavax.security.auth.useSubjectCredsOnly=false
+spark.driver.extraJavaOptions: -Djavax.security.auth.useSubjectCredsOnly=false
+spark.yarn.principal: ektov1-av_ca-sbrf-ru@DF.SBRF.RU
+spark.yarn.keytab: /home/ektov1-av_ca-sbrf-ru/keytab/user.keytab
+spark.sql.parquet.mergeScheme: false
+spark.sql.parquet.enable.summary-metadata: false
+spark.hadoop.dfs.replication: 2
+spark.core.connection.ack.wait.timeout: 800
+spark.storage.blockManagerSlaveTimeoutMs: 800s
+spark.rpc.askTimeout: 800s
+spark.network.timeout: 3600s
+spark.rpc.lookupTimeout: 800s
+spark.sql.orc.enabled: True
+spark.sql.orc.filterPushdown: True
+spark.sql.parquet.filterPushdown: True
+spark.sql.autoBroadcastJoinThreshold: 0
+spark.sql.hive.convertMetastoreOrc: True
+spark.sql.hive.caseSensitiveInferenceMode: INFER_ONLY
+spark.shuffle.consolidateFiles: True
+
