@@ -1,4 +1,4 @@
-#!/home/ektov1-av_ca-sbrf-ru/bin/python35
+#!/home/ektov/bin/python35
 import os
 import sys
 
@@ -105,8 +105,8 @@ for items in tbls:
     jclassname="com.teradata.jdbc.TeraDriver",
     url="jdbc:teradata://{}/{}".format(TERADATA_HOST, JDBC_ARGUMENTS),
     driver_args={"user": USERNAME, "password": PASSWORD},
-    jars=['/opt/workspace/ektov1-av_ca-sbrf-ru/notebooks/drivers/tdgssconfig.jar',
-          '/opt/workspace/ektov1-av_ca-sbrf-ru/notebooks/drivers/terajdbc4.jar']
+    jars=['/opt/workspace/ektov/notebooks/drivers/tdgssconfig.jar',
+          '/opt/workspace/ektov/notebooks/drivers/terajdbc4.jar']
     )
 
     curs = conn.cursor()
@@ -155,8 +155,8 @@ for items in tbls:
     jclassname="com.teradata.jdbc.TeraDriver",
     url="jdbc:teradata://{}/{}".format(TERADATA_HOST, JDBC_ARGUMENTS),
     driver_args={"user": USERNAME, "password": PASSWORD},
-    jars=['/opt/workspace/ektov1-av_ca-sbrf-ru/notebooks/drivers/tdgssconfig.jar',
-          '/opt/workspace/ektov1-av_ca-sbrf-ru/notebooks/terajdbc4.jar']
+    jars=['/opt/workspace/ektov/notebooks/drivers/tdgssconfig.jar',
+          '/opt/workspace/ektov/notebooks/terajdbc4.jar']
     )
     curs = conn.cursor()
     curs.execute(my_sql)
@@ -215,8 +215,8 @@ for items in tbls:
     jclassname="com.teradata.jdbc.TeraDriver",
     url="jdbc:teradata://{}/{}".format(TERADATA_HOST, JDBC_ARGUMENTS),
     driver_args={"user": USERNAME, "password": PASSWORD},
-    jars=['/opt/workspace/ektov1-av_ca-sbrf-ru/notebooks/drivers/tdgssconfig.jar',
-          '/opt/workspace/ektov1-av_ca-sbrf-ru/notebooks/terajdbc4.jar']
+    jars=['/opt/workspace/ektov/notebooks/drivers/tdgssconfig.jar',
+          '/opt/workspace/ektov/notebooks/terajdbc4.jar']
     )
     curs = conn.cursor()
     curs.execute(my_sql)
