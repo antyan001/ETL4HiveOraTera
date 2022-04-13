@@ -1,4 +1,4 @@
-#!/opt/workspace/ektov1-av_ca-sbrf-ru/bin/python35
+#!/opt/workspace/ektov/bin/python35
 
 import os
 import sys
@@ -21,7 +21,7 @@ pd.set_option('display.max_colwidth', -1)
 pd.set_option('display.max_rows', None)
 pd.set_option('display.max_columns', None)
 
-# curruser = 'ektov1-av_ca-sbrf-ru'
+# curruser = 'ektov'
 curruser = os.environ.get('USER')
 
 isUseOptWorkspace = False
