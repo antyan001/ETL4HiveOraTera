@@ -1,7 +1,7 @@
 import os
 import sys
 
-sys.path.insert(0, '/home/ektov1-av_ca-sbrf-ru/notebooks/labdata/lib/')
+sys.path.insert(0, '/home/$USER/notebooks/labdata/lib/')
 
 import warnings
 warnings.filterwarnings('ignore')
@@ -34,10 +34,10 @@ os.environ['PATH'] = "/usr/local/bin:/usr/bin:/home/$USER/bin:/opt/python/virtua
 class ETLtera(object):
 
     def __init__(self):
-        self.TERADATA_HOST = "TDSB15.cgs.sbrf.ru"
-        # DATABASE_NAME = "SBX_DB_SME_DKK_ANALYSE"
-        self.USERNAME = "Ektov-AV"
-        self.PASSWORD = 'eSpewvRkHBG31yd'
+        self.TERADATA_HOST = "TDSB15"
+        # DATABASE_NAME = ""
+        self.USERNAME = ""
+        self.PASSWORD = ''
         self.JDBC_ARGUMENTS = "CHARSET=UTF8,TMODE=ANSI"
 
     def get_df_from_teradata(self, curs, cols, size=100):
@@ -61,8 +61,8 @@ class ETLtera(object):
             jclassname="com.teradata.jdbc.TeraDriver",
             url="jdbc:teradata://{}/{}".format(self.TERADATA_HOST, self.JDBC_ARGUMENTS),
             driver_args={"user": self.USERNAME, "password": self.PASSWORD},
-            jars=['/home/ektov1-av_ca-sbrf-ru/notebooks/drivers/tdgssconfig.jar',
-                  '/home/ektov1-av_ca-sbrf-ru/notebooks/drivers/terajdbc4.jar']
+            jars=['/home/$USER/notebooks/drivers/tdgssconfig.jar',
+                  '/home/$USER/notebooks/drivers/terajdbc4.jar']
         )
         curs = conn.cursor()
         curs.execute(my_sql)
@@ -79,8 +79,8 @@ class ETLtera(object):
         jclassname="com.teradata.jdbc.TeraDriver",
         url="jdbc:teradata://{}/{}".format(self.TERADATA_HOST, self.JDBC_ARGUMENTS),
         driver_args={"user": self.USERNAME, "password": self.PASSWORD},
-        jars=['/home/ektov1-av_ca-sbrf-ru/notebooks/drivers/tdgssconfig.jar',
-              '/home/ektov1-av_ca-sbrf-ru/notebooks/drivers/terajdbc4.jar']
+        jars=['/home/$USER/notebooks/drivers/tdgssconfig.jar',
+              '/home/$USER/notebooks/drivers/terajdbc4.jar']
         )
         curs = conn.cursor()
         curs.execute(my_sql)
