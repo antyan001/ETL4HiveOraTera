@@ -69,10 +69,10 @@ os.chdir('/opt/workspace/{}/notebooks/SOURCES_UPDATE/sourses/'.format(curruser))
 
 #===============================================================================
 WHICH_ETL_DRIVER = 'ORA' #'TERA' #'ORA'
-TERADATA_HOST = "TDSB15.cgs.sbrf.ru"
+TERADATA_HOST = "TDSB15"
 DB = "PRD_DB_CLIENT4D_DEV1"
-# DATABASE_NAME = "report_all_voronka"
-USERNAME = "ektov1-av"
+# DATABASE_NAME = ""
+USERNAME = ""
 PASSWORD = getpass()
 db = TeraDB(TERADATA_HOST, DB, USERNAME, PASSWORD)
 #===============================================================================
