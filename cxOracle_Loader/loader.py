@@ -46,16 +46,16 @@ class Loader(object):
     """
     def __init__(self, init_dsn=False, encoding='cp1251', sep=','):
         self.tns_names = {
-        'sasprod': cx_Oracle.makedsn('kae9.ca.sbrf.ru', 1521, 'sasprod'),
-        'iskra4' : cx_Oracle.makedsn('10.112.79.164',   1521, 'iskra4'),
-        'iskra3' : cx_Oracle.makedsn('10.112.102.106',  1521, 'iskra3'),
-        'iskra2' : cx_Oracle.makedsn('10.112.242.254',  1521, 'iskra2'),
+        'sasprod': cx_Oracle.makedsn('', 1521, ''),
+        'iskra4' : cx_Oracle.makedsn('',   1521, ''),
+        'iskra3' : cx_Oracle.makedsn('',  1521, ''),
+        'iskra2' : cx_Oracle.makedsn('',  1521, ''),
         'iskra1' : """(DESCRIPTION =
            (LOAD_BALANCE=off)
              (FAILOVER = ON)
              (ADDRESS_LIST =
-                  (ADDRESS = (PROTOCOL = TCP)  (HOST = iskra10.ca.sbrf.ru) (PORT = 1521) )
-                  (ADDRESS = (PROTOCOL = TCP)  (HOST = iskra11.ca.sbrf.ru) (PORT = 1521) )
+                  (ADDRESS = (PROTOCOL = TCP)  (HOST = iskra10) (PORT = 1521) )
+                  (ADDRESS = (PROTOCOL = TCP)  (HOST = iskra11) (PORT = 1521) )
                   )
              (CONNECT_DATA = (SERVICE_NAME = cskostat_primary) (FAILOVER_MODE= (TYPE=select) (METHOD=basic)
                   )
@@ -68,7 +68,7 @@ class Loader(object):
     def _get_dsn(self, iskra):
         return self.tns_names[iskra]
 
-    def get_dataframe(self, query, login='iskra', iskra='iskra4', password='iskraurskb!2018'):
+    def get_dataframe(self, query, login='', iskra='iskra4', password=''):
         """
         Return dataframe  for specified query.
 
@@ -374,7 +374,7 @@ class Loader(object):
                               time.time() - start_time))
         db.close()
 
-    def save_csv(self, query, path='data.csv', iskra='iskra4', password='iskraurskb!2018', verbose=1, compress=1):
+    def save_csv(self, query, path='data.csv', iskra='iskra4', password='', verbose=1, compress=1):
         """
         Saves csv  for specified query.
 
@@ -393,7 +393,7 @@ class Loader(object):
             print(str(e))
 
     def upload_df_or_csv(self, df, table_name, path='/data/data.csv',
-                         iskra='iskra4', password='iskraurskb!2018',
+                         iskra='iskra4', password='',
                          parallel = 0, njobs=None, verbose=1, compress=1,
                          isclobe = 0, isuseclobdct = 0, isallvarchar = 0):
         """
