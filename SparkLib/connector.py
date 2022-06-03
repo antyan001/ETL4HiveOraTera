@@ -18,20 +18,20 @@ class OracleDB:
 
     def __init__(self, sid):
         self.DatabaseError = cx_Oracle.DatabaseError
-        if sid == 'iskra1':
-            self.dsn = '10.112.40.242:1521/cskostat_primary'
+        if sid == '':
+            self.dsn = ''
             self.user, self.password = '', ''
-        elif sid == 'iskra2':
-            self.dsn = '10.112.242.254:1521/iskra2_iskra2'
+        elif sid == '':
+            self.dsn = ''
             self.user, self.password = '', ''
-        elif sid == 'iskra3':
-            self.dsn = '10.112.102.106:1521/iskra3'
+        elif sid == '':
+            self.dsn = ''
             self.user, self.password = '', ''
-        elif sid == 'iskra4':
-            self.dsn = '10.112.79.164:1521/iskra4'
+        elif sid == '':
+            self.dsn = ''
             self.user, self.password = '', ''
         elif sid == 'sasprod':
-            self.dsn = 'kae9.ca.sbrf.ru:1521/sasprod'
+            self.dsn = ''
             self.user, self.password = '', ''
 
     def connect(self):
