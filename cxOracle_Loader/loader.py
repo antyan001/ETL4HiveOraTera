@@ -46,16 +46,16 @@ class Loader(object):
     """
     def __init__(self, init_dsn=False, encoding='cp1251', sep=','):
         self.tns_names = {
-        'sasprod': cx_Oracle.makedsn('', 1521, ''),
-        'iskra4' : cx_Oracle.makedsn('',   1521, ''),
-        'iskra3' : cx_Oracle.makedsn('',  1521, ''),
-        'iskra2' : cx_Oracle.makedsn('',  1521, ''),
+        'sasprod': cx_Oracle.makedsn('', 1521, $HOSTNAME),
+        'iskra4' : cx_Oracle.makedsn('',   1521, $HOSTNAME),
+        'iskra3' : cx_Oracle.makedsn('',  1521, $HOSTNAME),
+        'iskra2' : cx_Oracle.makedsn('',  1521, $HOSTNAME),
         'iskra1' : """(DESCRIPTION =
            (LOAD_BALANCE=off)
              (FAILOVER = ON)
              (ADDRESS_LIST =
-                  (ADDRESS = (PROTOCOL = TCP)  (HOST = iskra10) (PORT = 1521) )
-                  (ADDRESS = (PROTOCOL = TCP)  (HOST = iskra11) (PORT = 1521) )
+                  (ADDRESS = (PROTOCOL = TCP)  (HOST = $HOSTNAME) (PORT = 1521) )
+                  (ADDRESS = (PROTOCOL = TCP)  (HOST = $HOSTNAME) (PORT = 1521) )
                   )
              (CONNECT_DATA = (SERVICE_NAME = cskostat_primary) (FAILOVER_MODE= (TYPE=select) (METHOD=basic)
                   )
@@ -68,7 +68,7 @@ class Loader(object):
     def _get_dsn(self, iskra):
         return self.tns_names[iskra]
 
-    def get_dataframe(self, query, login='', iskra='iskra4', password=''):
+    def get_dataframe(self, query, login='', iskra=$HOSTNAME, password=''):
         """
         Return dataframe  for specified query.
 
@@ -89,7 +89,7 @@ class Loader(object):
         except Exception as e:
             print(str(e))
 
-    def get_dataframe_clob(self, query, iskra='iskra4', password='iskraurskb!2018'):
+    def get_dataframe_clob(self, query, iskra=$HOSTNAME, password=''):
         """
         Return dataframe  for specified query.
 
@@ -374,7 +374,7 @@ class Loader(object):
                               time.time() - start_time))
         db.close()
 
-    def save_csv(self, query, path='data.csv', iskra='iskra4', password='', verbose=1, compress=1):
+    def save_csv(self, query, path='data.csv', iskra=$HOSTNAME, password='', verbose=1, compress=1):
         """
         Saves csv  for specified query.
 
@@ -393,7 +393,7 @@ class Loader(object):
             print(str(e))
 
     def upload_df_or_csv(self, df, table_name, path='/data/data.csv',
-                         iskra='iskra4', password='',
+                         iskra=$HOSTNAME, password='',
                          parallel = 0, njobs=None, verbose=1, compress=1,
                          isclobe = 0, isuseclobdct = 0, isallvarchar = 0):
         """
@@ -428,9 +428,9 @@ class Loader(object):
         """
         try:
             if self.init_dsn:
-                db = OracleDB('tech_iskra[iskra]', password, self._get_dsn(iskra))
+                db = OracleDB('', password, self._get_dsn(iskra))
             else:
-                db = OracleDB('tech_iskra[iskra]', password, iskra)
+                db = OracleDB('', password, iskra)
             if not parallel:
                 self._push_balance(db, df, table_name, path, verbose, compress, isclobe, isuseclobdct, isallvarchar)
             else:
