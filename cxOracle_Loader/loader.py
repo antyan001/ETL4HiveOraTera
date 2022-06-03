@@ -109,9 +109,9 @@ class Loader(object):
 
         try:
             if self.init_dsn:
-                db = OracleDB('iskra', password, self._get_dsn(iskra))
+                db = OracleDB('', password, self._get_dsn(iskra))
             else:
-                db = OracleDB('iskra', password, iskra)
+                db = OracleDB('', password, iskra)
             print('Connecting...')
             db.connect()
             db.cursor.execute(query)
@@ -385,9 +385,9 @@ class Loader(object):
         """
         try:
             if self.init_dsn:
-                db = OracleDB('iskra', password, self._get_dsn(iskra))
+                db = OracleDB('', password, self._get_dsn(iskra))
             else:
-                db = OracleDB('iskra', password, iskra)
+                db = OracleDB('', password, iskra)
             self._get_balance(db, query, path, verbose, compress)
         except Exception as e:
             print(str(e))
